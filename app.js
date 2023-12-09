@@ -22,7 +22,11 @@ app.post('/', (req, res) => {
 
 app.post('/min-delay', async (req, res) => {
     console.log('ping was performed')
-    await setTimeout(()=>{}, 60000);
+    const delay = () => new Promise(resolve => setTimeout(resolve, 60000));
+
+    // Use the created Promise with await to introduce the delay
+    await delay();
+
     console.log(req.body)
     if(req.body.type === 'MESSAGE') return res.json({text: `I've got an message`})
 })
