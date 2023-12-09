@@ -9,6 +9,10 @@ app.use(bodyParser.json());
 
 app.listen(3000, () => console.log('app has been started'))
 
+app.get('/', (req, res)=> {
+    return res.json('Server is working')
+})
+
 app.post('/', (req, res) => {
     console.log('ping was performed')
     console.log(req.body)
